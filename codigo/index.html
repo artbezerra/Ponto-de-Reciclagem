@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+	<link rel="stylesheet" href="./scss/index.css" />
+	<title>Ponto de Reciclagem</title>
+</head>
+
+<body>
+	<div class="position-absolute w-100 top-0" style="z-index: 1000;">
+		<nav class="navbar bg-primary text-light navbar-expand-lg" data-bs-theme="dark" style="z-index: 1000;">
+			<div class="container">
+				<a class="navbar-brand text-light" href="./index.html">
+					<img style="height: 2.5rem;" src="./icon/logo.svg" alt="">
+					Ponto de reciclagem
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item" id="entrar">
+							<a class="nav-link text-light" aria-current="page" href="../codigo/Login.html">Entre</a>
+						</li>
+						<li class="nav-item" id="cadastrar">
+							<a class="nav-link text-light" aria-current="page" href="../codigo/Registro.html">Cadastre-se</a>
+						</li>
+						<li class="nav-item" id="perfil" hidden>
+							<a class="nav-link text-light" aria-current="page" href="./perfil.html">Perfil</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-light" aria-current="page" href="./sobre.html">Sobre nós</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-light" aria-current="page" href="dicas.html">Dicas de reciclagem</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-light" aria-current="page" href="./Produtos.html">Produtos reciclados</a>
+						</li>
+					</ul>
+					<form class="d-flex" role="search">
+						<input class="form-control me-2" style="max-width: 350px;" type="search"
+							placeholder="Busque um ponto de reciclagem" aria-label="Search">
+						<button class="btn btn-light" type="submit">Buscar</button>
+					</form>
+				</div>
+			</div>
+		</nav>
+	</div>
+
+	<div class="position-absolute w-100 bottom-0 d-flex showVisibility"
+		style="z-index: 2000; left: 1rem; max-width: 25%;" id="welcome">
+		<div class="card p-3 mb-4 text-primary">
+			<div class="row">
+				<img style="height: 5rem;" src="./icon/logo.svg" alt="">
+			</div>
+			<h4>Bem vindo ao Ponto de Reciclagem!</h4>
+			<div>
+				<div class="small mb-2">
+					<i class="fa-solid fa-square-check"></i>
+					Consulte sobre pontos de reciclagem na sua região e comece a reciclar hoje!
+				</div>
+				<div class="small mb-2">
+					<i class="fa-solid fa-square-check"></i>
+					Resgate pontos e troque por recompensas credenciadas.
+				</div>
+				<div class="small">
+					<i class="fa-solid fa-square-check"></i>
+					Ganhe desconto em nossas lojas parceiras enquanto ajuda o meio ambiente.
+				</div>
+				<div class="mt-3 text-center">
+					<strong>Faça já seu cadastro abaixo!</strong>
+					<div class="col-md-6 mx-auto">
+						<button onclick="navegar()" class="btn btn-primary w-100">
+							Registrar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="position-absolute bottom-0 w-100 d-flex justify-content-center" style="z-index: 1000;">
+		<div id="detalhes" style="display:none">
+			<div class="card p-3 mb-4 text-primary">
+				<h2 id="title" class="text-tertiary">Ponto de reciclagem 1</h2>
+				<b>Localização</b>
+				<div id="address">
+					Rua ??? de ???, bairro, cidade, estado
+				</div>
+				<div class="d-flex justify-content-between align-items-center mt-2">
+					<i class="fa-solid fa-thumbs-up text-success" style="cursor: pointer;"></i>
+					<div>
+						<i id="plastic" class="fa-solid fa-recycle text-plastico" style="cursor: pointer;"
+							data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+							data-bs-title="Plástico"></i>
+						<i id="paper" class="fa-solid fa-recycle text-papel" style="cursor: pointer;" data-bs-toggle="tooltip"
+							data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Papel"></i>
+						<i id="glass" class="fa-solid fa-recycle text-vidro" style="cursor: pointer;" data-bs-toggle="tooltip"
+							data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Vidro"></i>
+						<i id="metal" class="fa-solid fa-recycle text-metal" style="cursor: pointer;" data-bs-toggle="tooltip"
+							data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Metal"></i>
+						<i id="waste" class="fa-solid fa-recycle text-residuos" style="cursor: pointer;"
+							data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+							data-bs-title="Resíduos"></i>
+					</div>
+					<i class="fa-solid fa-thumbs-down text-danger" style="cursor: pointer;"></i>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="map" class="map"></div>
+
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+		crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/0beaa76997.js" crossorigin="anonymous"></script>
+	<script>
+		const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+		const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+	</script>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<script src="js/index.js"></script>
+</body>
+
+</html>

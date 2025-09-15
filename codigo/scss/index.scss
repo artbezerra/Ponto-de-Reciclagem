@@ -1,0 +1,67 @@
+$primary : #0c3825;
+$plastico: #bc3231;
+$papel   : #4660ac;
+$vidro   : #57b947;
+$metal   : #d3b635;
+$residuos: #d36735;
+$success : #198754;
+$warning : #ffc107;
+$danger  : #dc3545;
+$info    : #0dcaf0;
+$light   : #f8f9fa;
+$dark    : #212529;
+
+$theme-colors: ("primary": $primary,
+  "plastico": $plastico,
+  "papel": $papel,
+  "vidro": $vidro,
+  "metal": $metal,
+  "residuos": $residuos,
+  "success": $success,
+  "warning": $warning,
+  "danger": $danger,
+  "info": $info,
+  "light": $light,
+  "dark": $dark);
+
+
+#map {
+  height    : calc(100vh - 4rem);
+  margin-top: 4rem;
+  width     : 100vw;
+  z-index   : 0;
+}
+
+.faButton {
+  cursor: pointer;
+}
+
+.faButton:hover {
+  color: $primary;
+}
+
+@media (min-width: 1000px) {
+  .hiddenVisibility {
+    display   : none !important;
+    visibility: hidden;
+  }
+
+  .showVisibility {
+    display   : block;
+    visibility: visible;
+  }
+}
+
+@media (max-width: 1000px) {
+  .hiddenVisibility {
+    display   : block;
+    visibility: visible;
+  }
+
+  .showVisibility {
+    display   : none !important;
+    visibility: hidden;
+  }
+}
+
+@import "../node_modules/bootstrap/scss/bootstrap";

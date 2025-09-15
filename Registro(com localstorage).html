@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Registro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="./scss/index.css" />
+
+</head>
+
+<body>
+  <div class="w-100" style="z-index: 300;">
+    <nav class="navbar bg-primary navbar-expand-lg" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand text-light" href="./index.html">
+          <img style="height: 3rem;" src="./icon/logo.svg" alt="">
+          Pontos de reciclagem
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link text-light" aria-current="page" href="../codigo/Login.html">Entre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" aria-current="page" href="../codigo/Registro.html">Cadastre-se</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" aria-current="page" href="./sobre.html">Sobre nós</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" aria-current="page" href="./pontos.html">Dicas de reciclagem</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="card mx-auto w-50 mt-5">
+    <div class="container p-3">
+      <div class="registration-box">
+        <h1 class="text-center">Registro</h1>
+        <div>
+          <div class="form-group mt-3">
+            <label for="nome">Nome:</label>
+            <input type="text" class="form-control" id="nome" placeholder="Digite seu nome">
+          </div>
+          <div class="form-group mt-3">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Digite seu email">
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="senha">Senha:</label>
+                <input type="password" class="form-control" id="senha" placeholder="Digite sua senha">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="confirmar-senha">Confirmar Senha:</label>
+                <input type="password" class="form-control" id="confirmar-senha" placeholder="Confirme sua senha">
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div class="d-flex justify-content-center">
+                <button onclick="window.location.href='./index.html'" class="btn btn-dark"
+                  style="width: 10rem; margin-top: 10px">Voltar</button>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex justify-content-center">
+                <button onclick="window.location.href='./perfil.html'" class="btn btn-primary"
+                  style="width: 10rem; margin-top: 10px">Registrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Função para salvar os valores no Local Storage
+    function salvarFormulario() {
+      var nome = document.getElementById('nome').value;
+      var email = document.getElementById('email').value;
+      var senha = document.getElementById('senha').value;
+
+      var formulario = {
+        nome: nome,
+        email: email,
+        senha: senha
+      };
+
+      localStorage.setItem('formularioRegistro', JSON.stringify(formulario));
+    }
+
+    // Verificar se há dados salvos no Local Storage e preencher o registro
+    function preencherFormulario() {
+      var formularioSalvo = localStorage.getItem('formularioRegistro');
+
+      if (formularioSalvo) {
+        var formulario = JSON.parse(formularioSalvo);
+        document.getElementById('nome').value = formulario.nome;
+        document.getElementById('email').value = formulario.email;
+        document.getElementById('senha').value = formulario.senha;
+      }
+    }
+
+    // Chamar a função para preencher o formulário ao carregar a página
+    window.onload = preencherFormulario;
+  </script>
+  <script>
+  // Função para salvar os valores no Local Storage
+  function salvarFormulario() {
+    var nome = document.getElementById('nome').value;
+    var email = document.getElementById('email').value;
+    var senha = document.getElementById('senha').value;
+
+    var formulario = {
+      nome: nome,
+      email: email,
+      senha: senha
+    };
+
+    localStorage.setItem('formularioRegistro', JSON.stringify(formulario));
+  }
+
+  // Verificar se há dados salvos no Local Storage e preencher o registro
+  function preencherFormulario() {
+    var formularioSalvo = localStorage.getItem('formularioRegistro');
+
+    if (formularioSalvo) {
+      var formulario = JSON.parse(formularioSalvo);
+      document.getElementById('nome').value = formulario.nome;
+      document.getElementById('email').value = formulario.email;
+      document.getElementById('senha').value = formulario.senha;
+    }
+  }
+
+  // Chamar a função para preencher o formulário ao carregar a página
+  window.addEventListener('DOMContentLoaded', preencherFormulario);
+</script>
+<script>
+  // valores no Local Storage
+  function salvarFormulario() {
+    var nome = document.getElementById('nome').value;
+    var email = document.getElementById('email').value;
+    var senha = document.getElementById('senha').value;
+
+    var formulario = {
+      nome: nome,
+      email: email,
+      senha: senha
+    };
+
+    localStorage.setItem('formularioRegistro', JSON.stringify(formulario));
+  }
+
+  // Verificar se há dados salvos no Local Storage e preencher o registro
+  function preencherFormulario() {
+    var formularioSalvo = localStorage.getItem('formularioRegistro');
+
+    if (formularioSalvo) {
+      var formulario = JSON.parse(formularioSalvo);
+      document.getElementById('nome').value = formulario.nome;
+      document.getElementById('email').value = formulario.email;
+      document.getElementById('senha').value = formulario.senha;
+    }
+  }
+
+  // Chamar a função para preencher o formulário ao carregar a página
+  window.onload = preencherFormulario;
+</script>
+</body>
+
+</html>
